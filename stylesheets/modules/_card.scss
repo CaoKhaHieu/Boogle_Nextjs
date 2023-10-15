@@ -1,0 +1,62 @@
+.card {
+  border: 1px solid #e5e5e5;
+  margin: 1.5rem auto;
+  border-radius: 10px;
+  display: block;
+  overflow: hidden;
+  &-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-body {
+    padding: 1rem;
+    .card-title {
+      margin-bottom: 0.5rem;
+      color: map-get($color, 'black-midnight');
+    }
+    .card-tags {
+      display: flex;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      min-height: 25px;
+      .tag-item {
+        @include text-overflow(1);
+        line-height: 1.2rem;
+        padding: 0.2rem 0.5rem;
+        min-width: 2.5rem;
+        max-width: 8rem;
+        text-align: center;
+        color: map-get($color, 'black-midnight');
+        background: #eee;
+        border-radius: 3rem;
+        & + li {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+  }
+  &-title {
+    @include text-overflow(1);
+    font-size: 130%;
+    font-weight: bold;
+    line-height: 150%;
+    margin: 0.5rem auto;
+    color: map-get($color, 'black-midnight');
+  }
+  &-content {
+    color: map-get($color, 'gray');
+    font-weight: 400;
+    line-height: 150%;
+  }
+  &-footer {
+    @include flex-center-between;
+    height: 4rem;
+    padding: 0 1rem;
+    border-top: 1px solid #eee;
+  }
+}

@@ -1,0 +1,213 @@
+.row {
+  align-items: flex-start;
+  .author-interact {
+    padding: 1.5rem;
+    margin: 7rem 0 0 6rem;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .author-name {
+      @include text-overflow(1);
+      cursor: pointer;
+      margin: 0.5rem 0;
+    }
+    .interact-action-list {
+      width: 100%;
+      .interact-action-item {
+        @include align-center;
+        cursor: pointer;
+        margin: 0.5rem auto;
+        .item-icon {
+          &.active {
+            color: map-get($color, 'white-snow');
+            background-color: map-get($color, 'primary');
+          }
+          @include flex-center;
+          width: 2.5rem;
+          height: 2.5rem;
+          border: 1px solid map-get($color, 'primary');
+          background-color: map-get($color, 'white-snow');
+          color: map-get($color, 'primary');
+          border-radius: 50%;
+          transition: 0.3s;
+        }
+        p {
+          display: block;
+          margin: 0;
+          padding: 0;
+          font-weight: bold;
+          transition-duration: 0.3s;
+        }
+        &:hover > .item-icon {
+          font-size: 120%;
+          background-color: map-get($color, 'primary');
+          color: map-get($color, 'white-snow');
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+  .post-detail {
+    .post-header {
+      margin-bottom: 1rem;
+      .post-title {
+        font-size: 2.5rem;
+        text-align: center;
+      }
+    }
+    .author-detail {
+      @include flex-center-between;
+      .interact-detail-list {
+        @include flex-center-between;
+        height: 3rem;
+        min-width: 5rem;
+        display: none;
+        .interact-detail-item {
+          @include flex-center;
+          cursor: pointer;
+          border: 1px solid map-get($color, 'primary');
+          color: map-get($color, 'primary');
+          font-size: 1rem;
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+          margin-left: 0.5rem;
+          transition: 0.3s;
+          &:hover {
+            background-color: map-get($color, 'primary');
+            color: map-get($color, 'white-snow');
+            font-size: 120%;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+    .post-image {
+      margin-bottom: 1rem;
+    }
+    .author-info-list {
+      @include align-center;
+      height: 3rem;
+      overflow: hidden;
+      margin: 1rem 0;
+      .author-info-item {
+        @include align-center;
+        cursor: pointer;
+        margin-right: 1rem;
+        .author-avatar {
+          @include flex-center;
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 0.5rem;
+          img {
+            aspect-ratio: 1/1;
+            object-fit: cover;
+          }
+        }
+        .author-name {
+          @include text-overflow(1);
+          cursor: pointer;
+          max-width: 15rem;
+        }
+      }
+    }
+    .post-content {
+      font-size: map-get($font-size, 'xl');
+      line-height: 2rem;
+    }
+    .post-footer {
+      border-top: 1px solid #eee;
+      .interact-detail-list {
+        @include align-center;
+        justify-content: flex-end;
+        height: 3rem;
+        .interact-detail-item {
+          cursor: pointer;
+          margin-right: 1rem;
+          .fa-heart {
+            color: map-get($color, 'red-heart');
+          }
+        }
+      }
+    }
+    .interact-title {
+      cursor: pointer;
+    }
+    .form-comment {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      .comment-input {
+        border: 1px solid #e5e5e5;
+        width: 100%;
+        padding: 0.6rem 1rem;
+        outline: none;
+        border-radius: 2rem;
+        font-size: map-get($font-size, 'normal');
+        margin-right: 1rem;
+      }
+      button {
+        width: 150px;
+        height: 40px;
+      }
+    }
+    .error {
+      color: red;
+      font-size: map-get($font-size, 'sm');
+      margin-top: -1rem;
+      margin-bottom: 0.5rem;
+      margin-left: 0;
+    }
+    margin: 3rem auto;
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 0.5rem;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+    }
+    p {
+      display: inline-block;
+      font-size: map-get($font-size, 'normal');
+      line-height: 1.5rem;
+      img {
+        margin: 1rem 0;
+      }
+    }
+    figcaption {
+      text-align: center;
+      font-size: 0.75rem;
+      font-style: italic;
+    }
+  }
+}
+// @media screen and(max-width: 993px) {
+//   .detail-page {
+//     .row {
+//       .author-interact {
+//         visibility: hidden;
+//       }
+//       .post-detail {
+//         .author-detail {
+//           .interact-detail-list {
+//             display: flex;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
