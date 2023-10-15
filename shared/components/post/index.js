@@ -18,13 +18,10 @@ const Post = ({ post }) => {
             href="/detail/[id]"
             as={`detail/${_id}`}
           >
-            <Image 
+            <img 
               src={cover}
               alt=""
               className="post-image"
-              width={0}
-              height={0}
-              sizes="100vw"
             />
           </Link>
         </div>
@@ -44,7 +41,7 @@ const Post = ({ post }) => {
             href={userCurrent?.email === user?.email ? '/wall/me' : `/wall/${user?._id}`}
             className="post-creator-info"
           >
-            <Image
+            <img
               src={
                 user && user.picture
                   ? `${user.picture}`

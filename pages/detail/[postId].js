@@ -76,16 +76,13 @@ const PostDetail = ({ postData }) => {
                       }
                       className="author-avatar"
                     >
-                      <Image
+                      <img
                         src={
                           post.user.picture
                             ? `${post.user.picture}`
                             : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTht9-qZYmqErdGMhJVbRf7BfhLRGspNWaFnR8nddu3x7Da7nqh23vsG6VWtG_VE9G9kLU&usqp=CAU'
                         }
                         alt={post.user?.displayName}
-                        width={0}
-                        height={0}
-                        sizes="100vw"
                       />
                     </a>
                   </li>
@@ -132,12 +129,9 @@ const PostDetail = ({ postData }) => {
                 </ul>
               </div>
               <div className="post-image">
-                <Image
+                <img
                   src={post.cover}
                   alt="post-cover"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
                 />
               </div>
               <div className="post-content">
