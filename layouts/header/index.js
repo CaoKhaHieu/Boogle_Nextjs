@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Header = () => {
@@ -8,13 +9,16 @@ const Header = () => {
 
   const UserAction = () => (
     <li className="user-avatar">
-      <img
+      <Image
         src={
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTht9-qZYmqErdGMhJVbRf7BfhLRGspNWaFnR8nddu3x7Da7nqh23vsG6VWtG_VE9G9kLU&usqp=CAU'
         }
         alt=""
         className="avatar-image"
-      ></img>
+        width={0}
+        height={0}
+        sizes="100vw"
+      ></Image>
       {showUserAction ? (
         <div className="user-action">
           <ul className="action-list">

@@ -4,7 +4,6 @@ import SkeletonNewsfeed from '../../../shared/components/skeleton-component/Skel
 import axios from 'axios';
 
 const NewsFeed = ({ data }) => {
-  console.log({data}, '--')
   const [loadMore, setLoadMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
   const loading = false;

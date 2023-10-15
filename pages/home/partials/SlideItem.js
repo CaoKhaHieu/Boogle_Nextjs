@@ -10,18 +10,27 @@ const SlideItem = ({ post, index }) => {
       <a href={`/detail/${post?._id}`} className="post-link">
         <div className="row">
           <div className="post-image col-6 col-md-12">
-            <img src={post?.cover} alt="" />
+            <Image
+              src={post?.cover}
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
+            />
           </div>
           <div className="post-content col-6 col-md-12">
             <p className="post-topic">Business, Travel</p>
             <h2 className="post-title">{post?.title}</h2>
             {/* <p className="post-text-content">{post.content}</p> */}
             <div className="post-author">
-              <img
+              <Image
                 src={post?.user?.picture}
                 alt=""
                 className="author-avatar"
-              ></img>
+                width={0}
+                height={0}
+                sizes="100vw"
+              ></Image>
               <div className="author-content">
                 <p className="author-name">{post?.user?.displayName ? post?.user?.displayName : post?.user?.lastName }</p>
               </div>

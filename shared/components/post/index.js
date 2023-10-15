@@ -18,7 +18,14 @@ const Post = ({ post }) => {
             href="/detail/[id]"
             as={`detail/${_id}`}
           >
-            <img src={cover} alt="" className="post-image" layout='fill' />
+            <Image 
+              src={cover}
+              alt=""
+              className="post-image"
+              width={0}
+              height={0}
+              sizes="100vw"
+            />
           </Link>
         </div>
         <div className="card-body post-content">
@@ -37,7 +44,7 @@ const Post = ({ post }) => {
             href={userCurrent?.email === user?.email ? '/wall/me' : `/wall/${user?._id}`}
             className="post-creator-info"
           >
-            <img
+            <Image
               src={
                 user && user.picture
                   ? `${user.picture}`
@@ -45,6 +52,8 @@ const Post = ({ post }) => {
               }
               alt={user?.displayName}
               className="author-avatar"
+              layout='fill'
+              objectFit='contain'
             />
             <div className="author-info">
               <h4 className="card-content author-name">
