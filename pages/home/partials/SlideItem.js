@@ -7,7 +7,7 @@ const SlideItem = ({ post, index }) => {
       className="post-item"
       style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
     >
-      {/* <a href={`/detail/${post?._id}`} className="post-link"> */}
+      <a href={`/detail/${post?._id}`} className="post-link">
         <div className="row">
           <div className="post-image col-6 col-md-12">
             <img src={post?.cover} alt="" />
@@ -28,7 +28,7 @@ const SlideItem = ({ post, index }) => {
             </div>
           </div>
         </div>
-      {/* </a> */}
+      </a>
     </li>
   );
 };
