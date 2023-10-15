@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SkeletonElement = ({ type }) => {
+const SkeletonElement = ({ type }: { type: string }) => {
   const classes = `skeleton ${type}`;
   return <div className={classes}></div>;
 };

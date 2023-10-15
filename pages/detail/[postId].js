@@ -195,7 +195,9 @@ const PostDetail = ({ postData }) => {
 export default PostDetail;
 
 export async function getServerSideProps(context) {
-  const url = 'https://boogle.onrender.com/api/posts/63e263e8f2d93f7de4bdbb17';
+  const { params } = context;
+  const { postId } = params;
+  const url = `https://boogle.onrender.com/api/posts/${postId}`;
 
   const response = await fetch(url);
   const data = await response.json();

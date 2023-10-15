@@ -1,34 +1,32 @@
-import React from 'react';
-import { calculateTimeSince, formatNumber } from '../../utils';
 import Link from 'next/link';
-import Image from 'next/image';
+import React from 'react';
+import { calculateTimeSince, formatNumber } from '../../../utils';
 
 const Post = ({ post }) => {
-  const userCurrent = null;
   const { _id, title, comments, likes, user, cover, description, createdAt, tags } = post;
+  const userCurrent = {};
   const countLike = formatNumber(likes);
   const countComment = formatNumber(+comments);
   const timeSince = calculateTimeSince(createdAt);
+
+  const handleToWallPage = () => {
+    if (!userCurrent) {
+      dispatch(showModalSignInRequest(true));
+    }
+  };
 
   return (
     <li key={_id} className="list-item col-4 col-lg-6 col-md-12">
       <div className="card">
         <div className="card-img">
-          <Link
-            href="/detail/[id]"
-            as={`detail/${_id}`}
-          >
-            <img 
-              src={cover}
-              alt=""
-              className="post-image"
-            />
+          <Link href={`/detail/${_id}`}>
+            <img src={cover} alt="" className="post-image" />
           </Link>
         </div>
         <div className="card-body post-content">
-          <a href={`/detail/${_id}`}>
+          <Link href={`/detail/${_id}`}>
             <h2 className="card-title">{title}</h2>
-          </a>
+          </Link>
           <ul className="card-tags">
             {tags.map((item) => (
               <li className="tag-item">{item}</li>
@@ -37,28 +35,18 @@ const Post = ({ post }) => {
           <p className="post-description" dangerouslySetInnerHTML={{ __html: description }}></p>
         </div>
         <div className="card-footer">
-          <a
+          <Link
             href={userCurrent?.email === user?.email ? '/wall/me' : `/wall/${user?._id}`}
             className="post-creator-info"
+            onClick={handleToWallPage}
           >
-            <img
-              src={
-                user && user.picture
-                  ? `${user.picture}`
-                  : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTht9-qZYmqErdGMhJVbRf7BfhLRGspNWaFnR8nddu3x7Da7nqh23vsG6VWtG_VE9G9kLU&usqp=CAU'
-              }
-              alt={user?.displayName}
-              className="author-avatar"
-              layout='fill'
-              objectFit='contain'
-            />
             <div className="author-info">
               <h4 className="card-content author-name">
                 {user?.displayName ? user?.displayName : user?.lastName}
               </h4>
               <p className="card-content post-sub-info">{timeSince}</p>
             </div>
-          </a>
+          </Link>
           <div className="post-status-info">
             <div className="post-interact ">
               <p>
