@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import SlideItem from './partials/SlideItem';
-import Post from './partials/Post';
+import SlideItem from '../../components/Slide/SlideItem';
+import Post from '../../components/Post/Post';
 import SkeletonNewsfeed from '../../components/skeleton/SkeletonNewsfeed';
 
 export default function HomePage({ postList, newsList }) {
   const [index, setIndex] = useState(0);
-  const [posts, setPosts] = useState(postList);
+  const [posts, setPosts] = useState(postList || []);
 
-  const [newsFeed, setNewsFeed] = useState(newsList.data);
+  const [newsFeed, setNewsFeed] = useState(newsList?.data || []);
   const [loading, setLoading] = useState(false);
   const [loadMore, setLoadMore] = useState(newsList?.hasMore || false);
   const [pageNumber, setPageNumber] = useState(1);
@@ -88,8 +88,8 @@ export default function HomePage({ postList, newsList }) {
       <section className="section-new-post">
         <div className="container">
           <ul className="row group-item">
-            {newsFeed?.map((post) => (
-              <Post post={post} />
+            {newsFeed?.map((post, index) => (
+              <Post key={index} post={post} />
             ))}
           </ul>
           {loading && (
