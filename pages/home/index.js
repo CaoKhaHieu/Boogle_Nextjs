@@ -1,33 +1,53 @@
-export default function HomePage({ data }) {
+import { useEffect, useState } from 'react';
+
+import SlideItem from './partials/SlideItem';
+
+export default function HomePage({ postList }) {
+  const [index, setIndex] = useState(0);
+  const [posts, setPosts] = useState(postList);
+
+  useEffect(() => {
+    setInterval(() => {
+      setIndex((prev) => (prev > 1 ? 0 : prev + 1));
+    }, 10000);
+  }, []);
+
   return (
     <div className='app'>
-      <h1>HomePage</h1>
+      {/* Slide Post */}
+      <section className="section-slide">
+        <div className="container">
+          <h2 className="slide-title">Trending</h2>
+          <div className="slide-content">
+            <ul className="list-post">
+              {posts.length > 0 && posts?.map((item, indexSlide) => (
+                <SlideItem key={indexSlide} post={item} index={index} />
+              ))}
+            </ul>
+            <div className="slide-dots">
+              {posts.length > 0 && posts?.map((item, indexItem) => (
+                <span
+                  key={indexItem}
+                  className={index === indexItem ? 'dot-item active' : 'dot-item'}
+                  onClick={() => setIndex(indexItem)}
+                ></span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  )
+  );
 };
 
-// export async function getStaticProps(context) {
-//   const url = 'https://boogle.onrender.com/api/posts/recommend?page=1&size=3';
+export async function getServerSideProps(context) {
+  const url = 'https://boogle.onrender.com/api/posts/recommend?page=1&size=3';
 
-//   try {
-//     // Fetch your data here
-//     const response = await axios.get(url);
-//     const responseData = response.data; // Extract the data from the response
-
-//     // Return the data as props
-//     return {
-//       props: {
-//         data: responseData,
-//       },
-//     };
-//   } catch (error) {
-//     console.error('Error fetching data:', error);
-
-//     // Handle the error gracefully, e.g., display a message to the user
-//     return {
-//       props: {
-//         data: null, // You can set data to null or handle it as needed
-//       },
-//     };
-//   }
-// }
+  const response = await fetch(url);
+  const data = await response.json();
+  return {
+    props: {
+      postList: data,
+    }
+  }
+}
