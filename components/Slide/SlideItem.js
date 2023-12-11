@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import Link from 'next/link'
 
 const SlideItem = ({ post, index }) => {
   return (
@@ -7,7 +8,7 @@ const SlideItem = ({ post, index }) => {
       className="post-item"
       style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
     >
-      <a href={`/detail/${post?._id}`} className="post-link">
+      <Link href={`/detail/${post?._id}`} className="post-link" passHref>
         <div className="row">
           <div className="post-image col-6 col-md-12">
             <img
@@ -31,7 +32,7 @@ const SlideItem = ({ post, index }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </li>
   );
 };

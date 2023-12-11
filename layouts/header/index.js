@@ -1,11 +1,15 @@
 import Image from 'next/image';
 import React from 'react';
 
+import AuthenticationModal from '../../components/Authentication/AuthenticationModal';
+import { useModalSignIn } from '../../contexts/signin-modal/SignInModalContext';
+
 const Header = () => {
-  const userCurrent = null;
+  const userCurrent = '';
   const showMenu = false;
   const showUserAction = '';
-  const showModalSignIn = false;
+
+  const { showModalSignIn, handleShowModal } = useModalSignIn();
 
   const UserAction = () => (
     <li className="user-avatar">
@@ -88,7 +92,7 @@ const Header = () => {
                 <UserAction />
               ) : (
                 <li className="list-item menu-item">
-                  <p className="menu-link">
+                  <p className="menu-link" onClick={() => handleShowModal(true)}>
                     Sign In
                   </p>
                 </li>
@@ -128,27 +132,22 @@ const Header = () => {
                     <li
                       className="list-item menu-mobile-item"
                     >
-                      <a href="" className="menu-mobile-link">
+                      <p className="menu-mobile-link" onClick={() => console.log('first')}>
                         Sign In
-                      </a>
+                      </p>
                     </li>
                   ) : (
                     ''
                   )}
                 </ul>
-                <a
-                  href="/"
-                  className="menu-link menu-bar"
-                >
-                  <i className="fas fa-bars"></i>
-                </a>
               </li>
             </ul>
           </nav>
         </div>
       </div>
 
-      {/* {showModalSignIn ? <AuthenticationModal /> : ''} */}
+
+      {showModalSignIn ? <AuthenticationModal /> : ''}
     </header>
   );
 };

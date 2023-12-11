@@ -3,6 +3,10 @@ import Footer from '../layouts/footer';
 import Header from '../layouts/header';
 import '../stylesheets/styles.scss';
 
+import SignInModalProvider from '../contexts/signin-modal/SignInModalContext';
+import LoadingProvider from '../contexts/loading/LoadingContext';
+import NotificationProvider from "../contexts/notification/NotificationContext";
+
 function MyApp({ Component, pageProps }) {
   return (
     <div>
@@ -18,9 +22,15 @@ function MyApp({ Component, pageProps }) {
           href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css?fbclid=IwAR3RJieYNfmQVm1KhVvVuS24YKvwpDh19IZqQOKlKb7SJJY3EBj_qel1tqM"
         />
       </Head>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      <SignInModalProvider>
+        <NotificationProvider>
+          <LoadingProvider>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </LoadingProvider>
+        </NotificationProvider>
+      </SignInModalProvider>
     </div>
   );
 };
