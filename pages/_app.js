@@ -5,7 +5,7 @@ import '../stylesheets/styles.scss';
 
 import SignInModalProvider from '../contexts/signin-modal/SignInModalContext';
 import LoadingProvider from '../contexts/loading/LoadingContext';
-import NotificationProvider from "../contexts/notification/NotificationContext";
+// import NotificationProvider from "../contexts/notification/NotificationContext";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -23,13 +23,13 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <SignInModalProvider>
-        <NotificationProvider>
+        {/* <NotificationProvider> */}
           <LoadingProvider>
             <Header />
             <Component {...pageProps} />
             <Footer />
           </LoadingProvider>
-        </NotificationProvider>
+        {/* </NotificationProvider> */}
       </SignInModalProvider>
     </div>
   );
